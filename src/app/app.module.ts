@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SeccionEditorComponent } from './seccion-editor/seccion-editor.component';
 import { SeccionNoticiasComponent } from './seccion-noticias/seccion-noticias.component';
 import { VisualizarNoticiaComponent } from './visualizar-noticia/visualizar-noticia.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { VisualizarNoticiaComponent } from './visualizar-noticia/visualizar-noti
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
