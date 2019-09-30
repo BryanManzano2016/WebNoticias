@@ -5,8 +5,6 @@ export class Noticia {
 	etiquetas: [];
 	titulo: string;
 	contenido: string;
-
-	toString() {
-		return this.prioridad + this.titulo + this.fecha + this.lugar;
-	}
+	_id: string;
+	imagen: string;
 }

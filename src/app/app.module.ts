@@ -4,15 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SeccionEditorComponent } from './seccion-editor/seccion-editor.component';
+
 import { SeccionNoticiasComponent } from './seccion-noticias/seccion-noticias.component';
 import { VisualizarNoticiaComponent } from './visualizar-noticia/visualizar-noticia.component';
 
-
 @NgModule({
   declarations: [
-    AppComponent,
-    SeccionEditorComponent,
+    AppComponent,    
     SeccionNoticiasComponent,
     VisualizarNoticiaComponent
   ],

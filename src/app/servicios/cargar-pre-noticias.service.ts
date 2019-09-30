@@ -8,27 +8,23 @@ import { Noticia } from '../clases/noticia';
 
 export class CargarPreNoticiasService {
   	noticias: Noticia[];
+	noticia: Noticia;
 
   	constructor(private http: HttpClient) { }
 
 	leerPreNoticias() {
 		this.noticias = [];
-		this.http.get('http://localhost:3000/leerPreNoticias').
+		this.http.get('http://192.168.100.33:3000/leerPreNoticias').
 			toPromise().then( (data: any) => {  
 				this.noticias =  data;
 		});
 	}
 
-	obtenerNoticias (): Noticia[] {
-		return this.noticias;
-	}
-
 	leerNoticia(id: string) {
-		// http://localhost:3000/leerNoticia?id=5d8e2f98c9c34e1cccd138ea
 		const httpOptions = { params: new HttpParams().set('id', id) };
-		this.http.get('http://localhost:3000/leerNoticia', httpOptions).
+		this.http.get('http://192.168.100.33:3000/leerNoticia', httpOptions).
 			toPromise().then( (data: any) => {  
-				console.log(data);
+				this.noticia =  data[0];
 		});
 	}
 

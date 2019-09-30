@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CargarPreNoticiasService } from '../servicios/cargar-pre-noticias.service';
+
+import { CompartirNoticiaService } from '../servicios/compartir-noticia.service';
 import { Noticia } from '../clases/noticia';
 
 @Component({
@@ -9,12 +11,22 @@ import { Noticia } from '../clases/noticia';
 })
 export class SeccionNoticiasComponent implements OnInit {
 
-	noticias: Noticia[];
+	noticias: Noticia[]; //
 	indices: number[];
-	noticiaPort: Noticia[];
+	noticiaPort: Noticia[]; //
 	indicesPort: number[];
+	noticiaElegida: Noticia[]; //
+	validarEnvio = [];
 
-	constructor(private servicioGeneradorTags: CargarPreNoticiasService) { }
+
+	constructor(private servicioCargarNoticias: CargarPreNoticiasService,
+		private servicioCompartirNoticia: CompartirNoticiaService) {
+	    
+		this.servicioCompartirNoticia.noticiaElegidaActual.subscribe( e => this.noticiaElegida = e );
+		this.servicioCompartirNoticia.validarOperacionActual.subscribe(e => this.validarEnvio = e);
+      	this.servicioCompartirNoticia.cambiarValidar([true]);
+		
+	}
 
 	ngOnInit() {	
 		this.leerPreNoticias();
@@ -22,16 +34,17 @@ export class SeccionNoticiasComponent implements OnInit {
 
 	leerPreNoticias() {
 
-		this.servicioGeneradorTags.leerPreNoticias();
+		this.servicioCargarNoticias.leerPreNoticias();
 		setTimeout(() => {
-			this.noticias = this.servicioGeneradorTags.obtenerNoticias();									
-			if (this.noticias !== null) {
+			this.noticias = this.servicioCargarNoticias.noticias;
+			if (this.noticias !== undefined) {
 				if (this.noticias.length > 0) {
 					this.range(1, this.noticias.length);
 					this.noticiaPortada();
 				}
 			}		
 		}, 3000);
+
 	}
 	// Generar rango para noticias de portada y secundarias
 	range(start: number, end: number) {
@@ -45,7 +58,17 @@ export class SeccionNoticiasComponent implements OnInit {
 			this.noticiaPort.push(this.noticias[index]);
 		}
 	}
+	// cuando click en noticia
+	elegirNoticia(id: string) {
+		this.servicioCargarNoticias.leerNoticia(id);
+		setTimeout(() => {
+			this.noticiaElegida[0] = this.servicioCargarNoticias.noticia;
+			if (this.noticiaElegida !== undefined) {
+				if (this.noticiaElegida.length > 0) {
+      				this.servicioCompartirNoticia.cambiarValidar([false]);
+				}
+			}		
+		}, 3000);		
+	}
+
 }
-
-
-// // console.log(Date().substring(0, 24));

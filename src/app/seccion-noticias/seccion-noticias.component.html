@@ -1,16 +1,25 @@
-<div id="contenedorPrinc">
-	<div class="noticiasPrinc" *ngFor="let i of indicesPort">
-		<div class="imgNoticiasPrinc"><img class="imagenPrinc" src="../../assets/login.png"></div>
-		<div class="detallesPrinc">{{noticiaPort[i].fecha}}</div>
-		<div class="tituloPrinc"><p>{{noticiaPort[i].titulo}}</p></div>
+<div *ngIf="validarEnvio[0]">
+	<div id="contenedorPrinc">
+		<div class="noticiasPrinc" *ngFor="let i of indicesPort">
+			<img class="imagenPrinc" [src]="noticiaPort[i].imagen">
+			<div class="detallesPrinc">{{noticiaPort[i].lugar}}, {{noticiaPort[i].fecha}}</div>
+			<div class="tituloPrinc titulo"  (click)="elegirNoticia(noticiaPort[i]._id)">
+				<p>{{noticiaPort[i].titulo}}</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="contenedorSec">
+		<div class="noticiasSec" *ngFor="let i of indices">
+			<div class="imgNoticiasSec">
+				<img class="imagenSec" [src]="noticias[i].imagen">
+			</div>
+			<div class="detallesSec">{{noticias[i].lugar}}, {{noticias[i].fecha}}</div>
+			<div class="tituloSec titulo" (click)="elegirNoticia(noticias[i]._id)">
+				<p>{{noticias[i].titulo}}</p>
+			</div>
+		</div>
 	</div>
 </div>
 
-<div id="contenedorSec">
-	<div class="noticiasSec" *ngFor="let i of indices">
-		<div class="imgNoticiasSec"><img class="imagenSec" src="../../assets/login.png"></div>
-		<div class="detallesSec">{{noticias[i].fecha}}</div>
-		<div class="tituloSec"><p>{{noticias[i].titulo}}</p></div>
-	</div>
-</div>
-
+<app-visualizar-noticia></app-visualizar-noticia>

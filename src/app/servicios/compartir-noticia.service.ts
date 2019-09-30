@@ -1,9 +1,29 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class CompartirNoticiaService {
+import { BehaviorSubject } from 'rxjs';
+import { Noticia } from '../clases/noticia';
 
-  constructor() { }
+@Injectable({
+  	providedIn: 'root'
+})
+
+export class CompartirNoticiaService {
+  
+	private noticiaElegida = new BehaviorSubject([]);
+	noticiaElegidaActual = this.noticiaElegida.asObservable();
+
+	private validarOperacion = new BehaviorSubject([]);
+  	validarOperacionActual = this.validarOperacion.asObservable();
+
+  	constructor() { 
+	}
+
+	cambiarNoticiaElegida(data: Noticia[]) {
+    	this.noticiaElegida.next(data);
+  	}
+
+	cambiarValidar(data: boolean[]) {
+		this.validarOperacion.next(data);
+	}	  
+	
 }

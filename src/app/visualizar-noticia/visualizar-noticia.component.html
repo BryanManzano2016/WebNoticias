@@ -1,0 +1,6 @@
+<div id="noticia" *ngIf="!validarEnvio[0]">
+	<h2 id="titulo">{{noticiaElegida[0].titulo}}</h2>
+	<img id="imagen" [src]="noticiaElegida[0].imagen">
+	<h3 id="detalles">{{noticiaElegida[0].lugar}}, {{noticiaElegida[0].fecha}}</h3>
+	<p id="contenido">{{noticiaElegida[0].contenido}}</p>
+</div>

@@ -1,0 +1,29 @@
+$anchuraPrincipal: 940px;
+
+#noticia {
+	width: $anchuraPrincipal;
+	margin: 0 1% 2% 0;
+	border: 1px solid;
+	border-radius: 10px;
+}
+
+#noticia > * {
+	margin: 2% 3% 2% 3%;
+	width: $anchuraPrincipal * 0.9;
+}
+
+#imagen {
+	height: 300px;
+	width: 100%;
+	margin: 0 10% 0 10%;
+}
+
+#titulo {
+	font-size: 40px;
+	color: darkslateblue;
+}
+
+#contenido {
+	text-align: justify;
+	font-size: 16px;
+}

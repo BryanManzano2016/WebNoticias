@@ -4,22 +4,17 @@ $alturaPrincipal: 420px;
 #contenedorPrinc, #contenedorSec {
 	width: $anchuraPrincipal;
 	border: 1px solid;
+	border-radius: 10px;
 }
 
 // contenedor > [ noticias} > [imgNoticias , detalles , titulo] ]
-// IMAGENES PRIMARIAS
 
 .noticiasPrinc {
 	margin: 1% 20% 0 20%;
 }
 
 .noticiasPrinc > * {
-	margin: 2% 10% 0 10%;
-}
-
-.imgNoticiasPrinc {
-	width: 80%;
-	height: $alturaPrincipal * 0.70;
+	margin: 3% 10% 1% 10%;
 }
 
 .imagenPrinc {
@@ -30,12 +25,11 @@ $alturaPrincipal: 420px;
 }
 
 .detallesPrinc {
-	height: 10%;
 	font: 15px times;
 	font: 15px;
 }
 
-.tituloPrinc > p{
+.tituloPrinc > p {
 	font: 30px bold times;
 	text-align: justify;
 }
@@ -50,11 +44,7 @@ $alturaSecundaria: 300px;
 }
 
 .noticiasSec > * {
-	margin: 2% 10% 0 10%;
-}
-
-.imgNoticiasSec {
-	width: 80%;
+	margin: 3% 10% 1% 10%;
 }
 
 .imagenSec {
@@ -63,11 +53,15 @@ $alturaSecundaria: 300px;
 }
 
 .detallesSec {
-	height: 10%;
 	font: 15px times;
 }
 
 .tituloSec > p{
 	font: 20px bold times;
 	text-align: justify;
+}
+
+.titulo :hover {
+	background-color: #ddd;
+	color: black;
 }
